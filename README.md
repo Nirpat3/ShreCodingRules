@@ -49,3 +49,20 @@ This will:
 - install `.agents/plugins/marketplace.json`
 
 Use `--force` only when you explicitly want to replace an existing setup.
+
+## Default New Project Command
+
+Run:
+
+```bash
+new-shre-project <project-name>
+```
+
+Optional GitHub remote creation:
+
+```bash
+new-shre-project <project-name> --github --private
+new-shre-project <project-name> --github --public
+```
+
+This command is backed by `scripts/create_project.sh` and is intended to be the default way to start new repositories.
