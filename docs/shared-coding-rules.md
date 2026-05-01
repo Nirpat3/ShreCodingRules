@@ -152,7 +152,94 @@ If a task needs a broader-access or differently specialized model, document the 
 - No docs-only delivery for implementation milestones.
 - No hidden side effects in layers that should remain declarative or read-only.
 
-## 14. How To Apply This In A Repo
+## 14. Token Discipline
+
+### Start Narrow
+
+Prefer these entrypoints over broad repo scans:
+
+- `git diff --name-only`
+- failing test files
+- route names
+- API contract files
+- issue-linked file paths
+- trace or error output
+
+Do not begin with whole-repo review unless the task is explicitly architectural.
+
+### Context Budget
+
+Before editing code, define the task in a minimal working context block:
+
+```text
+Task scope
+- Entrypoint:
+- Files likely touched:
+- Contract boundary:
+- Verification plan:
+- Trace evidence required:
+```
+
+Rules:
+
+- Keep the block short and specific.
+- Do not begin broad exploration before this block is filled in.
+- If the block changes during the task, update it explicitly instead of silently drifting scope.
+- If the task cannot be framed this way, it is likely too broad and should be decomposed.
+
+### Read Order
+
+Read in this order unless the task proves a different path is necessary:
+
+1. local `AGENTS.md`
+2. local `README.md`
+3. relevant contract, route, or spec
+4. changed file
+5. direct caller or callee
+6. targeted test or verification file
+
+Avoid whole-file or whole-repo reading when symbol lookup, grep hits, contracts, or targeted excerpts are enough.
+
+### Change Cone
+
+Default implementation and review scope:
+
+1. changed file
+2. direct imports, callers, or callees
+3. transport or contract boundary
+
+Only move outside the cone when:
+
+- the changed contract has multiple direct consumers
+- a failing test proves wider impact
+- a trace or runtime error proves the boundary assumption was wrong
+- the task explicitly asks for architectural review
+
+Do not review the whole repo by default for a local bug fix or scoped feature slice.
+
+### Large File Discipline
+
+- Use search, symbol lookup, and targeted excerpts before reading long files.
+- Read only the relevant section of a large file unless a dependency chain requires more context.
+- Do not repeatedly reread the same large file when a short local summary or scope block will do.
+
+## 15. Verification Ladder
+
+Use the lowest-cost verification that can falsify the change first:
+
+1. static check on the touched file or package
+2. targeted unit or integration test
+3. route-level or command-level execution
+4. local end-to-end flow check for the touched path
+5. broader repo typecheck or build only after the narrow checks pass, or when repo rules require it
+
+Rules:
+
+- Verify the touched slice before validating unrelated surfaces.
+- If a narrow verification fails, fix or rescope before moving to broader checks.
+- If a broad check fails after the slice passes, separate true regressions from pre-existing failures.
+
+## 16. How To Apply This In A Repo
 
 When adapting this file into a project:
 
