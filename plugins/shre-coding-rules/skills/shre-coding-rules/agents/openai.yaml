@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shre Coding Rules"
+  short_description: "Apply a shared coding contract across repos and models."
+  default_prompt: "Use the shared coding rules before making changes."

@@ -1,0 +1,39 @@
+{
+  "name": "shre-coding-rules",
+  "version": "0.1.0",
+  "description": "Shared coding rules skill and model entrypoint plugin for cross-repository engineering standards.",
+  "author": {
+    "name": "[TODO: Author Name]",
+    "email": "[TODO: author@example.com]",
+    "url": "[TODO: https://github.com/author]"
+  },
+  "homepage": "[TODO: add repo homepage after publishing]",
+  "repository": "[TODO: add repository URL after publishing]",
+  "license": "MIT",
+  "keywords": [
+    "coding-standards",
+    "agent-rules",
+    "engineering"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Shre Coding Rules",
+    "shortDescription": "Shared coding contract for multiple models and agents.",
+    "longDescription": "Installs a reusable shared coding rules skill and a single-source-of-truth contract that CODEX, CLAUDE, GEMINI, and AGENTS entry files can all reference.",
+    "developerName": "[TODO: Developer Name]",
+    "category": "Engineering Standards",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "[TODO: add website URL after publishing]",
+    "privacyPolicyURL": "[TODO: add privacy policy URL after publishing]",
+    "termsOfServiceURL": "[TODO: add terms URL after publishing]",
+    "defaultPrompt": [
+      "Apply the shared coding rules before editing this repository.",
+      "Review this change against the shared coding contract.",
+      "Adapt this repository to use the shared coding rules as its default agent baseline."
+    ],
+    "brandColor": "#1F6FEB"
+  }
+}

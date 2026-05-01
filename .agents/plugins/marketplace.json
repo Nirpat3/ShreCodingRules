@@ -1,0 +1,20 @@
+{
+  "name": "Shre Coding Rules Marketplace",
+  "interface": {
+    "displayName": "Shre Coding Rules"
+  },
+  "plugins": [
+    {
+      "name": "shre-coding-rules",
+      "source": {
+        "source": "local",
+        "path": "./plugins/shre-coding-rules"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering Standards"
+    }
+  ]
+}
